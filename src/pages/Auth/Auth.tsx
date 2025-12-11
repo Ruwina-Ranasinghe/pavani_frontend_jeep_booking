@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../../state/auth/authSlice.ts";
@@ -14,26 +14,25 @@ export default function Auth() {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
 
-    const { loading, error, token } = useSelector((state: RootState) => state.auth);
-
-    // Redirect after successful login
-    useEffect(() => {
-        if (token) {
-            navigate("/dashboard"); // Change this to your dashboard route
-        }
-    }, [token, navigate]);
+    const { loading, error} = useSelector((state: RootState) => state.auth);
 
     const handleSubmit = async () => {
         if (isLogin) {
-            dispatch(loginUser({ email, password }));
+            dispatch(loginUser({ email, password })).then((res) => {
+                if (res.meta.requestStatus === "fulfilled") {
+                    navigate("/app/dashboard");
+                }
+            });
         } else {
             dispatch(registerUser({ name, email, password })).then((res) => {
                 if (res.meta.requestStatus === "fulfilled") {
-                    setIsLogin(true);
+                    setIsLogin(true); // switch to login
+                    // Optionally navigate after login success
                 }
             });
         }
     };
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex items-center justify-center p-4 relative overflow-hidden">
