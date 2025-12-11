@@ -27,7 +27,7 @@ export function Home() {
                         to="/login"
                         className="hidden md:block bg-orange-600 px-4 py-2 rounded-xl hover:bg-orange-700"
                     >
-                        Login
+                        Logout
                     </Link>
 
                     {/* Mobile Menu */}
