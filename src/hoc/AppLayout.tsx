@@ -7,7 +7,7 @@ export default function AppLayout() {
             {/*    <h2>Jeep Booking System</h2>*/}
             {/*</nav>*/}
 
-            <div style={{ padding: "20px" }}>
+            <div >
                 <Outlet />
             </div>
         </>
