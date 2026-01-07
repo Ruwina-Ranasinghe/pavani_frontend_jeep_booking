@@ -1,15 +1,17 @@
 import { Outlet } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
-export default function AppLayout() {
+const AppLayout = () => {
     return (
-        <>
-            {/*<nav style={{ padding: "16px", background: "#f0f0f0" }}>*/}
-            {/*    <h2>Jeep Booking System</h2>*/}
-            {/*</nav>*/}
-
-            <div >
+        <div className="min-h-screen bg-[#0d1117] text-white">
+            <Navbar />
+            <main className="pt-20">
                 <Outlet />
-            </div>
-        </>
+            </main>
+            <Footer />
+        </div>
     );
-}
+};
+
+export default AppLayout;

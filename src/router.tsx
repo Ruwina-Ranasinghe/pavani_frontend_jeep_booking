@@ -5,6 +5,13 @@ import AppLayout from "./hoc/AppLayout.tsx";
 import Login from "./pages/Auth/Auth";
 import NotFound from "./pages/NotFound.tsx";
 import {Home} from "./pages/Dashboard";
+import {Booking} from "./pages/Booking";
+import {Contact} from "./pages/Contact";
+import {BookingConfirmation} from "./pages/Booking/BookingConfirmation.tsx";
+import {Payment} from "./pages/Booking/Payment.tsx";
+import {SearchJeeps} from "./pages/Jeep";
+import AdminDashboard from "./pages/Admin";
+import {OperatorDashboard} from "./pages/operator";
 
 
 export const router = createBrowserRouter([
@@ -15,6 +22,17 @@ export const router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <Home/>,
+            },
+            { path: "booking", element: <Booking /> },
+            { path: "payment", element: <Payment /> },
+            { path: "booking-confirmation", element: <BookingConfirmation /> },
+            {
+                path: "/app/search-jeeps",
+                element: <SearchJeeps />,
+            },
+            {
+                path: "contact",           // <-- new booking route
+                element: <Contact/>,
             },
         ],
     },
@@ -34,4 +52,17 @@ export const router = createBrowserRouter([
         path: "*",
         element: <Navigate to="/not-found" replace />,
     },
+    { path: "booking-confirmation",
+        element: <BookingConfirmation />
+    },
+    { path: "admin-panel",
+        element: <AdminDashboard />
+    },
+
+    { path: "operator-panel",
+        element: <OperatorDashboard />
+    },
+
+
+
 ]);
